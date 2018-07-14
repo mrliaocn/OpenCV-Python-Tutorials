@@ -9,7 +9,7 @@ cv2.namedWindow('Filter', cv2.WINDOW_AUTOSIZE)
 # Linear filter
 
 ## Blur
-''' 
+'''
     blur the image just by calc the mean of the kernel window
     ksize: the kernel size
     anchor: anchor point; default value Point(-1,-1) means that the anchor is at the kernel center.
@@ -47,7 +47,7 @@ cv2.waitKey(0)
 
 
 
-# Non-linear filter 
+# Non-linear filter
 
 ## medianBlur
 '''Smoothes an image by median filter with ksize x ksize'''
@@ -60,7 +60,7 @@ cv2.waitKey(0)
 
 ## Sobel filter
 '''In Sobel, the ksize must be one of 1, 3, 5 and 7'''
-'''Sobel 计算的是图像的'''
+'''Sobel 计算的是图像的一阶差分值，当图像在指定方向上变化剧烈时，其差分值将越大，从而找到边界'''
 sobe = cv2.Sobel(image, ddepth=cv2.CV_8U, dx=1, dy=0, ksize=3)
 cv2.imshow('Filter', sobe)
 cv2.waitKey(0)
@@ -78,7 +78,7 @@ cv2.waitKey(0)
 '''
 双边滤波： 同时考虑像素值差别和空间距离，两个像素差别越小，权重越大；两个像素距离越近，权重越大
 位置距离权重：
-    w1 = exp(-1 * ( (x-i)^2 + (y-j)^2 ) / (2*e^2) ) 
+    w1 = exp(-1 * ( (x-i)^2 + (y-j)^2 ) / (2*e^2) )
 像素差异权重：
     w2 = exp(-1 * (f(x,y)-f(i,j))^2 / (2*e^2) )
     weight = w1 * w2
